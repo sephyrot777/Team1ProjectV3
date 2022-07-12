@@ -1,0 +1,81 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block title %}경기장 정보{% endblock %}
+{% block style %}
+    <style>
+        #wrap {display: flex}
+        #nav { width: 200px;}
+        #info { display: flex}
+        #info table tr td:first-child { width:150px; border-bottom: 1px solid white; border-right: 1px solid white; }
+        #info table tr td:last-child { width:350px; border-bottom: 1px solid white; }
+        #info table tr td { color: white; font-weight: bold;}
+        #info table { background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("https://blog.kakaocdn.net/dn/kWr1v/btqyqdOcKUZ/5bqzHwqJJdKvPBU4ekM1WK/img.jpg");
+                                        background-size: 500px 400px; background-position: center;}
+
+        #info img { width: 600px; height: 400px;}
+        #main1 { text-align: center; border: 1px solid red; width: 1100px; background: white;}
+        #map1 { width: 900px; margin: 0 auto;}
+    </style>
+{% endblock %}
+
+{% block contents %}
+<div id="wrap">
+    <div id="nav" class="bg-dark ">
+        <nav class="navbar-dark bg-dark py-2 fs-5 fw-bold">
+            <ul class="navbar-nav nav-fill">
+                {% for t in tbs %}
+                <li class="nav-item"><a class="nav-link" href="/teams/stadium/?based={{ t.based }}">{{ t.hteam }}</a></li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </div>
+    <div id="main1">
+        <div id="info">
+            <table>
+                <tr>
+                    <img src="/static/imgs/stadiums/{{ based }}.jfif">
+                </tr>
+                <tr>
+                    <td><div>경기장 이름</div></td>
+                    <td><div>{{ stname }}</div></td>
+                </tr>
+                <tr>
+                    <td><div>개장일</div></td>
+                    <td><div>{{ opdate }}</div></td>
+                </tr>
+                <tr>
+                    <td><div>홈 구단</div></td>
+                    <td><div>{{ hteam }}</div></td>
+                </tr>
+                <tr>
+                    <td><div>수용인원</div></td>
+                    <td><div>{{ accnum }}명</div></td>
+                </tr>
+                <tr>
+                    <td><div>위치</div></td>
+                    <td><div>{{ addr }}</div></td>
+                </tr>
+            </table>
+        </div>
+
+
+
+        <div id="map1">
+            <div id="daumRoughmapContainer{{ addrstmp }}" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+            <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+            <script charset="UTF-8">
+                new daum.roughmap.Lander({
+                    "timestamp" : "{{ addrstmp }}",
+                    "key" : "{{ addrkey }}",
+                    "mapWidth" : "900",
+                    "mapHeight" : "600"
+                }).render();
+            </script>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}

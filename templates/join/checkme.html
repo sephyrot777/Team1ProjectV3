@@ -1,0 +1,95 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}회원가입-본인인증{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/vendor/join.css' %}">
+{% endblock %}
+
+{% block contents %}
+    <div id="main">
+        <div class="mb-4" id="seq">
+            <div id="step1"><span>Step.1 약관동의</span><span><i class="bi bi-list-check text-center"></i></span></div>
+            <div id="step2on"><span>Step.2 본인인증</span><span><i class="bi bi-shield-lock text-center"></i></span></div>
+            <div id="step3"><span>Step.3 기본정보입력</span><span><i class="bi bi-pencil-square text-center"></i></span></div>
+            <div id="step4"><span>Step.4 가입완료</span><span><i class="bi bi-person-check text-center"></i></span></div>
+        </div>
+        <div class="mt-2 mx-5" id="agree">
+            <h1>2. 본인인증</h1>
+            <small class="fw-bold" style="color:#626262">회원 가입여부 및 개인정보 보호를 위한 본인인증 절차가 필요합니다.</small>
+        </div><!-- // 2.본인인증-->
+        <hr>
+        <div class="card card-body bg-light mx-5 mb-5">
+            <form name="chkfrm" method="post">
+                {% csrf_token %}
+                <h4> </h4>
+                <div class="row mt-4">
+                    <label for = "name" class="col-form-label col-4 text-end">이름</label>
+                    <div class="col-4">
+                        <input type="text" name="name" id="name" class="form-control">
+                    </div>
+                </div> <!-- //name -->
+                <div class="row mt-4">
+                    <label for = "birth" class="col-form-label col-4 text-end">생년월일/성별</label>
+                    <div class="col-8 d-flex flex-row">
+                        <input type="text" name="birth" id="birth"
+                               class="form-control"
+                               style="width: 150px"
+                               placeholder="ㆍ ㆍ ㆍ ㆍ ㆍ ㆍ" maxlength="6">
+                        <label class="col-form-label">&nbsp;-&nbsp;</label>
+                        <input type="text" name="gender" id="gender"
+                               class="form-control"
+                               style="width: 40px"
+                               placeholder="ㆍ" maxlength="1">
+                        <label class="col-form-label">&nbsp;ㆍ ㆍ ㆍ ㆍ ㆍ ㆍ</label>
+                    </div>
+                </div> <!-- //birth/gender -->
+                <div class="row mt-3">
+                    <label for = "phone" class="col-form-label col-4 text-end">휴대폰 번호</label>
+                    <div class="col-4">
+                        <input type="text" name="phone" id="phone" class="form-control">
+                    </div>
+                </div> <!-- //phone -->
+                <div class="row mt-3">
+                    <label for = "name" class="col-form-label col-4 text-end">자동가입 방지</label>
+                    <div class="col-5">
+                        <div class="g-recaptcha" data-sitekey="6Lfc8qYgAAAAACC4tqko7arDKGq8STh-lZig_DCF"></div>
+                        <input type="hidden" name="g-recaptcha" id="g-recaptcha">
+                        <div class="text-danger">{{ error }}</div>
+                    </div>
+                </div> <!-- //captcha -->
+                <i></i>
+                <div class="text-center mt-5 mb-5">
+                    <button type="button" class="btn btn-danger" id="okchk">
+                        <i class="bi bi-check"></i>인증확인</button>
+                    <button type="button" class="btn btn-dark" id="nochk">
+                        <i class="bi bi-x"></i>인증취소</button>
+                </div> <!-- //buttons -->
+            </form>
+        </div>  <!--// phone check-->
+    </div><!-- // 메인 -->
+{% endblock %}
+{% block script %}
+    <script>
+    const okchk = document.querySelector('#okchk');
+    const gc = document.querySelector('#g-recaptcha');
+    okchk.addEventListener('click', ()=>{
+        const name=document.chkfrm.name;
+        const birth=document.chkfrm.birth;
+        const gender=document.chkfrm.gender;
+        const phone=document.chkfrm.phone;
+
+        if (name.value=='')alert('이름을 적어주세요!')
+        else if (birth.value=='')alert('생년월일을 적어주세요!')
+        else if (gender.value=='')alert('성별을 적어주세요!')
+        else if (phone.value=='')alert('전화번호를 적어주세요!')
+        else if (grecaptcha.getResponse()=='')alert('자동가입 방지를 클릭해주세요!')
+        else {
+            gc.value=grecaptcha.getResponse();
+            document.chkfrm.submit();
+        }
+
+    });
+    </script>
+{% endblock %}

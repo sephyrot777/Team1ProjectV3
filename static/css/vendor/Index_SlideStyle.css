@@ -1,0 +1,89 @@
+/* 테스트용 배경색이긴 하지만 */
+/* 흰색보다는 덜 쨍해서 괜찮은 듯... */
+body{
+    margin: 0;
+    user-select: none;
+}
+
+.slide_3d {
+    position:relative;
+    z-index: 0;
+    margin-top:400px;
+    }
+
+/* 슬라이더 라벨 테스트용 */
+#slider {
+    position:relative;
+    width:50%;
+    height: 30vw;
+    margin:80px auto;
+    font-family:'Helvetica', sans-serif;
+    perspective: 1400px;
+    transform-style: preserve-3d;
+}
+
+/* 인풋(라디오 버튼) 위치 조절 */
+/* position때문에 justify-content:center가 실행 안 됨 */
+/* 추후 가운데 정렬 필요*/
+#slider input {
+    position:relative;
+    top: 108%;
+    width: 18px;
+    height: 18px;
+    margin: 0 15px 0 0;
+    opacity: 0.4;
+    transform: translateX(80px);
+    align-items: center;
+}
+
+/* 라디오 버튼 마지막 margin 없앰 */
+#slider input[type=radio]:nth-child(5){
+    margin-right: 0px;
+}
+
+/* 슬라이더 라벨=>사진 넣을 수 있도록 사이즈 조절 */
+#slider label {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    color:white;
+    font-size:70px;
+    font-weight:bold;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    transition: 400ms ease;
+}
+
+
+/* Slider Functionality(위치, 크기, 그림자) */
+#s1:checked ~ #slide1, #s2:checked ~ #slide2, #s3:checked ~ #slide3,
+#s4:checked ~ #slide4, #s5:checked ~ #slide5{
+    box-shadow: 0 13px 26px rgba(0,0,0,0.3),
+        0 12px 6px rgba(0,0,0,0.2);
+    transform:translate3d(0%, 0, 0px);
+}
+#s1:checked ~ #slide2, #s2:checked ~ #slide3, #s3:checked ~ #slide4,
+#s4:checked ~ #slide5, #s5:checked ~ #slide1{
+    box-shadow: 0 6px 10px rgba(0,0,0,0.3),
+        0 2px 2px rgba(0,0,0,0.2);
+    transform:translate3d(15%, 0, -100px);
+}
+#s1:checked ~ #slide3, #s2:checked ~ #slide4, #s3:checked ~ #slide5,
+#s4:checked ~ #slide1, #s5:checked ~ #slide2{
+    box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    transform:translate3d(30%, 0, -250px);
+}
+#s1:checked ~ #slide4, #s2:checked ~ #slide5, #s3:checked ~ #slide1,
+#s4:checked ~ #slide2, #s5:checked ~ #slide3{
+    box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    transform:translate3d(-30%, 0, -250px);
+}
+#s1:checked ~ #slide5, #s2:checked ~ #slide1, #s3:checked ~ #slide2,
+#s4:checked ~ #slide3, #s5:checked ~ #slide4{
+    box-shadow: 0 6px 10px rgba(0,0,0,0.3),
+        0 2px 2px rgba(0,0,0,0.2);
+    transform:translate3d(-15%, 0, -100px);
+}

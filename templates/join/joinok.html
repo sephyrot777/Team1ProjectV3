@@ -1,0 +1,28 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}가입완료{% endblock %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/vendor/join.css' %}">
+{% endblock %}
+{% block contents %}
+    <div id="main">
+        <div class="mb-4" id="seq">
+            <div id="step1"><span>Step.1 약관동의</span><span><i class="bi bi-list-check text-center"></i></span></div>
+            <div id="step2"><span>Step.2 본인인증</span><span><i class="bi bi-shield-lock text-center"></i></span></div>
+            <div id="step3"><span>Step.3 기본정보입력</span><span><i class="bi bi-pencil-square text-center"></i></span></div>
+            <div id="step4on"><span>Step.4 가입완료</span><span><i class="bi bi-person-check text-center"></i></span></div>
+        </div><!-- // 절차칸 -->
+        <div class="mt-2 mx-5" id="agree">
+            <h1>4. 가입완료</h1>
+            <small class="fw-bold" style="color:#626262">입력하신 정보는 회원님의 동의없이 공개되지 않으며, 개인정보보호정책에 의해 보호를 받습니다.</small>
+        </div><!-- // 4.기본정보입력-->
+        <hr>
+        <div style="text-align: center;">
+            <h2>회원가입이 <b>완료</b> 되었습니다.</h2>
+            <p><b>{{ m.name }}</b>님의 회원가입을 축하합니다.</p>
+            <p>알차고 실속있는 서비스로 찾아뵙겠습니다.</p>
+            <hr>
+        </div>
+    </div><!-- // main -->
+{% endblock %}

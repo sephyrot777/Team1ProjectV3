@@ -1,0 +1,41 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}상품페이지{% endblock %}
+{% block style %}
+    <style>
+        #nav { width: 200px;}
+        #wrap {display: flex;}
+    </style>
+{% endblock %}
+
+
+{% block contents %}
+<div id="wrap">
+    <div id="nav" class="bg-dark">
+        <nav class="navbar-dark bg-dark py-2 fs-5 fw-bold">
+            <ul class="navbar-nav nav-fill">
+                {% for t in tbs %}
+                <li class="nav-item"><a class="nav-link" href="/shopping/shop/?based={{ t.based }}">{{ t.hteam }}</a></li>
+                {% endfor shop %}
+            </ul>
+        </nav>
+    </div>
+    {% if based == '인천' or based == '울산' %}
+        <div class="bg-dark" style="width: 1100px; height: 1000px;">
+            <img src="https://swai.smu.ac.kr/images/sub/bg_ready.jpg" style="width: 1100px; height: 700px;">
+        </div>
+    {% else %}
+        <iframe width="1100" height="1000" src="{{ url }}" name="test" id="test"></iframe>
+    {% endif %}
+
+</div>
+
+
+
+
+
+{% endblock %}
+
+
+{% block script %}{% endblock %}
