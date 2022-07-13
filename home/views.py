@@ -1,5 +1,7 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views import View
+from django.core import serializers
 
 # Create your views here.
 
@@ -71,18 +73,15 @@ class SearchIdView(View):
         form = request.GET.dict()
 
         # 아이디를 찾기 위해 가입 때 입력한 이메일로 가입여부 조회
-        isExisted = Member.objects.filter(email=form['email']).exists()
-        print(isExisted)
-
 
         # isExisted가 True면 DB에서 id를 찾아 context로 보내고, False면 error 내용을 context로 보낸다
-        if isExisted == 1:
-            suserid = Member.objects.select_related().get(email=form['email'])
-            error=''
+        # m= Member.objects.select_related().get(email=form['email'])
+        # context = {'member': m}
+        # return render(request, 'layouts/modal.html', context)
 
-        else:
-            suserid = 'Not Founded'
-            error = '입력하신 이메일로 가입된 아이디가 존재하지 않습니다.'
+        result= Member.objects.select_related().filter(email=form['email'])
+        json_data = serializers.serialize('json', result)
+        print(json_data, form['email'])
 
-        context = {'suserid':suserid, 'error': error}
-        return render(request, 'layouts/modal.html', context)
+
+        return HttpResponse(json_data, content_type='application/json')
