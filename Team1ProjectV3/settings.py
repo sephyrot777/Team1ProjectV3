@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'schedule.apps.ScheduleConfig',
     'teams.apps.TeamsConfig',
     'shopping.apps.ShoppingConfig',
+    'policy.apps.PolicyConfig',
 ]
 
 MIDDLEWARE = [

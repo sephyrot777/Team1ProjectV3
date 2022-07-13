@@ -26,4 +26,5 @@ urlpatterns = [
     path('schedule/', include('schedule.urls')),
     path('teams/', include('teams.urls')),
     path('shopping/', include('shopping.urls')),
+    path('policy/', include('policy.urls')),
 ]

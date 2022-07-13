@@ -31,3 +31,8 @@ class TeamsView(View):
         print(context)
 
         return render(request, 'teams/stadium.html', context)
+
+
+class OrganizationView(View):
+    def get(self, request):
+        return render(request, 'teams/organization.html')

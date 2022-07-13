@@ -19,4 +19,5 @@ from . import views
 
 urlpatterns = [
     path('stadium/', views.TeamsView.as_view(), name='stadium'),
+    path('organization/', views.OrganizationView.as_view(), name='organization'),
 ]
