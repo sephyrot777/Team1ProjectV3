@@ -13,4 +13,5 @@ urlpatterns = [
     path('logout/', views.LogoutView.as_view(), name='logout'),
     path('sitemap/', views.SitemapView.as_view(), name='sitemap'),
     path('mypage/', views.MypageView.as_view(), name='mypage'),
+    path('searchid/', views.SearchIdView.as_view(), name='searchid'),
 ]
