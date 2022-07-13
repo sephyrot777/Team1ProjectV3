@@ -1,0 +1,120 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}{% endblock %}
+
+{% block style %}
+<style>
+    a { color:black;
+    text-decoration-line: none;}
+    h3 { color:navy;}
+
+</style>
+{% endblock %}
+
+{% block contents %}
+<div class="contentBox section sitemap">
+<br>
+<br>
+<br>
+    <div class="container px-5" style="border: 3px solid navy;">
+        <div class="clear row mt-3">
+            <div class="col-1"></div>
+            <div class="list left col-2 row">
+                <div class="item">
+                    <div class="in">
+                        <h3>Media</h3>
+                        <hr style="color:navy">
+                        <ul class="depth_1">
+                            <li><a href="{% url 'news' %}">News</a></li>
+                            <li><a href="{% url 'announce' %}">공지사항</a></li>
+                            <li><a href="{% url 'teamPlayer' %}">구단</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="list two col-2 row">
+                <div class="item">
+                    <div class="in">
+                        <h3>K리그 일정</h3>
+                        <hr style="color:navy">
+                        <ul class="depth_1">
+                            <li><a href="schedule/kl1.html">K리그 1</a></li>
+                            <li><a href="#">K리그 2</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="list center col-2 row">
+                <div class="item">
+                    <div class="in">
+                        <h3>Player</h3>
+                        <hr style="color:navy">
+                        <ul class="depth_1">
+                            <li><a href="{% url 'coach' %}">선수단</a></li>
+                            <li><a href="{% url 'record' %}">기록 / 순위</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="list four col-3 row">
+                <div class="item">
+                    <div class="in">
+                        <h3>About K league</h3>
+                        <hr style="color:navy;">
+                        <ul class="depth_1">
+                            <h5>구장 오시는 길</h5>
+                                 <ul><a href="/teams/stadium/?based=서울">FC서울</a></ul>
+                                 <ul><a href="/teams/stadium/?based=수원삼성">수원 삼성</a></ul>
+                                 <ul><a href="/teams/stadium/?based=울산">울산 현대</a></ul>
+                                 <ul><a href="/teams/stadium/?based=포항">포항 스틸러스</a></ul>
+                                 <ul><a href="/teams/stadium/?based=제주">제주UTD</a></ul>
+                                 <ul><a href="/teams/stadium/?based=수원">수원FC</a></ul>
+                                 <ul><a href="/teams/stadium/?based=전북">전북현대</a></ul>
+                                 <ul><a href="/teams/stadium/?based=인천">인천UTD</a></ul>
+                                 <ul><a href="/teams/stadium/?based=대구">대구FC</a></ul>
+                                 <ul><a href="/teams/stadium/?based=김천">김천상무</a></ul>
+                                 <ul><a href="/teams/stadium/?based=성남">성남FC</a></ul>
+                                 <ul><a href="/teams/stadium/?based=강원">강원FC</a></ul>
+                            <br>
+                            <h5><a href="{% url 'organization' %}">조직도</a></h5>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="list right col-2 row">
+                <div class="item">
+                    <div class="in">
+                        <h3>SHOP</h3>
+                        <hr style="color:navy">
+                        <ul class="depth_1">
+                            <h5>쇼핑몰</h5>
+                            <ul class="depth_2"><a href="/shopping/shop/?based=서울">FC서울</a></ul>
+                            <ul class="depth_2"><a href="/shopping/shop/?based=수원삼성">수원 삼성</a></ul>
+                            <ul class="depth_2"><a href="/shopping/shop/?based=울산">울산 현대</a></ul>
+                            <ul class="depth_2"><a href="/shopping/shop/?based=포항">포항 스틸러스</a></ul>
+                            <ul class="depth_2"><a href="/shopping/shop/?based=제주">제주UTD</a></ul>
+                            <ul class="depth_2"><a href="/shopping/shop/?based=수원">수원FC</a></ul>
+                            <ul class="depth_2"><a href="/shopping/shop/?based=전북">전북 현대</a></ul>
+                            <ul class="depth_2"><a href="/shopping/shop/?based=인천">인천UTD</a></ul>
+                            <ul class="depth_2"><a href="/shopping/shop/?based=대구">대구FC</a></ul>
+                            <ul class="depth_2"><a href="/shopping/shop/?based=김천">김천상무</a></ul>
+                            <ul class="depth_2"><a href="/shopping/shop/?based=성남">성남FC</a></ul>
+                            <ul class="depth_2"><a href="/shopping/shop/?based=강원">강원fc</a></ul>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+{% endblock %}
+
+
+{% block script %}{% endblock %}

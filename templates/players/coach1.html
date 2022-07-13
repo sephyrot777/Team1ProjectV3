@@ -6,6 +6,8 @@
     <style>
         #wrap {display: flex}
         #nav { width: 200px;}
+        #mtable th { text-align: end; width: 100px; border: 1px solid black; font-size: 15px;}
+        #mtable td { text-align: center; width: 200px;border: 1px solid black}
     </style>
 {% endblock %}
 
@@ -29,20 +31,19 @@
                 <ul class="player_box row row-cols-2 row-cols-md-5 g-3 justify-content-center text-center">
                     {% for p in pinfo %}
                         {% if p.position == 'GK' %}
-                            <div class="card text-center" style="width: 15rem; margin-right: 20px;">
-                                <a href="javascript:showplayer({{ p.id }})">
-                                    <img src="/static/imgs/{{ p.team }}/{{ p.name }}.png" class="card-img-top" alt="...">
-                                </a>
-                                <div class="card-body text-center fw-bold fs-3">
-                                    <a href="javascript:showplayer({{ p.id }})">{{ p.name }}</a>
+                            <a href="javascript:showplayer({{ p.id }})" class="card text-center mx-2 p-0" style="width: 15rem; height: 25rem; text-decoration: none; color: black">
+                                <div>
+                                    <img src="/static/imgs/{{ p.team }}/{{ p.name }}.png" class="card-img-top">
+                                    <div class="card-body text-center fw-bold fs-3">{{ p.name }}</div>
+                                    <div id="team{{ p.id }}" hidden>{{ p.team }}</div>
+                                    <div id="number{{ p.id }}" hidden>{{ p.number }}</div>
+                                    <div id="name{{ p.id }}" hidden>{{ p.name }}</div>
+                                    <div id="height{{ p.id }}" hidden>{{ p.height }}</div>
+                                    <div id="kg{{ p.id }}" hidden>{{ p.kg }}</div>
+                                    <div id="birth{{ p.id }}" hidden>{{ p.birth }}</div>
+                                    <div id="position{{ p.id }}" hidden>{{ p.position }}</div>
                                 </div>
-                                <div id="team{{ p.id }}" hidden>{{ p.team }}</div>
-                                <div id="name{{ p.id }}" hidden>{{ p.name }}</div>
-                                <div id="height{{ p.id }}" hidden>{{ p.height }}</div>
-                                <div id="kg{{ p.id }}" hidden>{{ p.kg }}</div>
-                                <div id="birth{{ p.id }}" hidden>{{ p.birth }}</div>
-                                <div id="position{{ p.id }}" hidden>{{ p.position }}</div>
-                            </div>
+                            </a>
                         {% endif %}
                     {% endfor %}
                 </ul>
@@ -51,20 +52,19 @@
                 <ul class="player_box row row-cols-2 row-cols-md-5 g-3 justify-content-center text-center">
                     {% for p in pinfo %}
                         {% if p.position == 'DF' %}
-                            <div class="card text-center" style="width: 15rem; margin-right: 20px;">
-                                <a href="javascript:showplayer({{ p.id }})">
-                                    <img src="/static/imgs/{{ p.team }}/{{ p.name }}.png" class="card-img-top" alt="...">
-                                </a>
-                                <div class="card-body text-center fw-bold fs-3">
-                                    <a href="javascript:showplayer({{ p.id }})">{{ p.name }}</a>
+                            <a href="javascript:showplayer({{ p.id }})" class="card text-center mx-2 p-0" style="width: 15rem; height: 25rem; text-decoration: none; color: black">
+                                <div>
+                                    <img src="/static/imgs/{{ p.team }}/{{ p.name }}.png" class="card-img-top">
+                                    <div class="card-body text-center fw-bold fs-3">{{ p.name }}</div>
+                                    <div id="team{{ p.id }}" hidden>{{ p.team }}</div>
+                                    <div id="number{{ p.id }}" hidden>{{ p.number }}</div>
+                                    <div id="name{{ p.id }}" hidden>{{ p.name }}</div>
+                                    <div id="height{{ p.id }}" hidden>{{ p.height }}</div>
+                                    <div id="kg{{ p.id }}" hidden>{{ p.kg }}</div>
+                                    <div id="birth{{ p.id }}" hidden>{{ p.birth }}</div>
+                                    <div id="position{{ p.id }}" hidden>{{ p.position }}</div>
                                 </div>
-                                <div id="team{{ p.id }}" hidden>{{ p.team }}</div>
-                                <div id="name{{ p.id }}" hidden>{{ p.name }}</div>
-                                <div id="height{{ p.id }}" hidden>{{ p.height }}</div>
-                                <div id="kg{{ p.id }}" hidden>{{ p.kg }}</div>
-                                <div id="birth{{ p.id }}" hidden>{{ p.birth }}</div>
-                                <div id="position{{ p.id }}" hidden>{{ p.position }}</div>
-                            </div>
+                            </a>
                         {% endif %}
                     {% endfor %}
                 </ul>
@@ -73,20 +73,19 @@
                 <ul class="player_box row row-cols-2 row-cols-md-5 g-3 justify-content-center text-center">
                     {% for p in pinfo %}
                         {% if p.position == 'MF' %}
-                            <div class="card text-center" style="width: 15rem; margin-right: 20px;">
-                                <a href="javascript:showplayer({{ p.id }})">
-                                    <img src="/static/imgs/{{ p.team }}/{{ p.name }}.png" class="card-img-top" alt="...">
-                                </a>
-                                <div class="card-body text-center fw-bold fs-3">
-                                    <a href="javascript:showplayer({{ p.id }})">{{ p.name }}</a>
+                            <a href="javascript:showplayer({{ p.id }})" class="card text-center mx-2 p-0" style="width: 15rem; height: 25rem; text-decoration: none; color: black">
+                                <div>
+                                    <img src="/static/imgs/{{ p.team }}/{{ p.name }}.png" class="card-img-top">
+                                    <div class="card-body text-center fw-bold fs-3">{{ p.name }}</div>
+                                    <div id="team{{ p.id }}" hidden>{{ p.team }}</div>
+                                    <div id="number{{ p.id }}" hidden>{{ p.number }}</div>
+                                    <div id="name{{ p.id }}" hidden>{{ p.name }}</div>
+                                    <div id="height{{ p.id }}" hidden>{{ p.height }}</div>
+                                    <div id="kg{{ p.id }}" hidden>{{ p.kg }}</div>
+                                    <div id="birth{{ p.id }}" hidden>{{ p.birth }}</div>
+                                    <div id="position{{ p.id }}" hidden>{{ p.position }}</div>
                                 </div>
-                                <div id="team{{ p.id }}" hidden>{{ p.team }}</div>
-                                <div id="name{{ p.id }}" hidden>{{ p.name }}</div>
-                                <div id="height{{ p.id }}" hidden>{{ p.height }}</div>
-                                <div id="kg{{ p.id }}" hidden>{{ p.kg }}</div>
-                                <div id="birth{{ p.id }}" hidden>{{ p.birth }}</div>
-                                <div id="position{{ p.id }}" hidden>{{ p.position }}</div>
-                            </div>
+                            </a>
                         {% endif %}
                     {% endfor %}
                 </ul>
@@ -95,20 +94,19 @@
                 <ul class="player_box row row-cols-2 row-cols-md-5 g-3 justify-content-center text-center">
                     {% for p in pinfo %}
                         {% if p.position == 'FW' %}
-                            <div class="card text-center" style="width: 15rem; margin-right: 20px;">
-                                <a href="javascript:showplayer({{ p.id }})">
-                                    <img src="/static/imgs/{{ p.team }}/{{ p.name }}.png" class="card-img-top" alt="...">
-                                </a>
-                                <div class="card-body text-center fw-bold fs-3">
-                                    <a href="javascript:showplayer({{ p.id }})">{{ p.name }}</a>
+                            <a href="javascript:showplayer({{ p.id }})" class="card text-center mx-2 p-0" style="width: 15rem; height: 25rem; text-decoration: none; color: black">
+                                <div>
+                                    <img src="/static/imgs/{{ p.team }}/{{ p.name }}.png" class="card-img-top">
+                                    <div class="card-body text-center fw-bold fs-3">{{ p.name }}</div>
+                                    <div id="team{{ p.id }}" hidden>{{ p.team }}</div>
+                                    <div id="number{{ p.id }}" hidden>{{ p.number }}</div>
+                                    <div id="name{{ p.id }}" hidden>{{ p.name }}</div>
+                                    <div id="height{{ p.id }}" hidden>{{ p.height }}</div>
+                                    <div id="kg{{ p.id }}" hidden>{{ p.kg }}</div>
+                                    <div id="birth{{ p.id }}" hidden>{{ p.birth }}</div>
+                                    <div id="position{{ p.id }}" hidden>{{ p.position }}</div>
                                 </div>
-                                <div id="team{{ p.id }}" hidden>{{ p.team }}</div>
-                                <div id="name{{ p.id }}" hidden>{{ p.name }}</div>
-                                <div id="height{{ p.id }}" hidden>{{ p.height }}</div>
-                                <div id="kg{{ p.id }}" hidden>{{ p.kg }}</div>
-                                <div id="birth{{ p.id }}" hidden>{{ p.birth }}</div>
-                                <div id="position{{ p.id }}" hidden>{{ p.position }}</div>
-                            </div>
+                            </a>
                         {% endif %}
                     {% endfor %}
                 </ul>
@@ -136,6 +134,10 @@
                     <tr>
                         <th>포지션</th>
                         <td id="position"></td>
+                    </tr>
+                    <tr>
+                        <th>등번호</th>
+                        <td id="number"></td>
                     </tr>
                     <tr>
                         <th>선수명</th>
@@ -175,9 +177,13 @@
             pimg = '<img src="/static/imgs/'+tname+'/'+pname+'.png" style="width: 200; height: 300px;">'
             document.getElementById('image').innerHTML = pimg
             document.getElementById('team').innerHTML = logo
+            byear = document.getElementById(`birth${id}`).textContent
+            age = (2022 - parseInt(byear.split('-')[0]))+1
+            nameage = pname+'('+age+'세)'
 
             document.getElementById('position').textContent = document.getElementById(`position${id}`).textContent
-            document.getElementById('name').textContent = document.getElementById(`name${id}`).textContent
+            document.getElementById('number').textContent = document.getElementById(`number${id}`).textContent
+            document.getElementById('name').textContent = nameage
             document.getElementById('height').textContent = document.getElementById(`height${id}`).textContent
             document.getElementById('kg').textContent = document.getElementById(`kg${id}`).textContent
             document.getElementById('birth').textContent = document.getElementById(`birth${id}`).textContent
