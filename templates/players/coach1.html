@@ -10,6 +10,7 @@
 {% endblock %}
 
 {% block contents %}
+{#<div id="main">#}
     <div id="wrap">
         <div id="nav" class="bg-dark ">
             <nav class="navbar-dark bg-dark py-2 fs-5 fw-bold">
@@ -28,9 +29,19 @@
                 <ul class="player_box row row-cols-2 row-cols-md-5 g-3 justify-content-center text-center">
                     {% for p in pinfo %}
                         {% if p.position == 'GK' %}
-                            <div class="card" style="width: 15rem; margin-right: 20px;">
-                                <img src="/static/imgs/{{ p.team }}/{{ p.name }}.png" class="card-img-top" alt="...">
-                                <div class="card-body  fw-bold fs-3">{{ p.name }}</div>
+                            <div class="card text-center" style="width: 15rem; margin-right: 20px;">
+                                <a href="javascript:showplayer({{ p.id }})">
+                                    <img src="/static/imgs/{{ p.team }}/{{ p.name }}.png" class="card-img-top" alt="...">
+                                </a>
+                                <div class="card-body text-center fw-bold fs-3">
+                                    <a href="javascript:showplayer({{ p.id }})">{{ p.name }}</a>
+                                </div>
+                                <div id="team{{ p.id }}" hidden>{{ p.team }}</div>
+                                <div id="name{{ p.id }}" hidden>{{ p.name }}</div>
+                                <div id="height{{ p.id }}" hidden>{{ p.height }}</div>
+                                <div id="kg{{ p.id }}" hidden>{{ p.kg }}</div>
+                                <div id="birth{{ p.id }}" hidden>{{ p.birth }}</div>
+                                <div id="position{{ p.id }}" hidden>{{ p.position }}</div>
                             </div>
                         {% endif %}
                     {% endfor %}
@@ -41,8 +52,18 @@
                     {% for p in pinfo %}
                         {% if p.position == 'DF' %}
                             <div class="card text-center" style="width: 15rem; margin-right: 20px;">
-                                <img src="/static/imgs/{{ p.team }}/{{ p.name }}.png" class="card-img-top" alt="...">
-                                <div class="card-body text-center fw-bold fs-3">{{ p.name }}</div>
+                                <a href="javascript:showplayer({{ p.id }})">
+                                    <img src="/static/imgs/{{ p.team }}/{{ p.name }}.png" class="card-img-top" alt="...">
+                                </a>
+                                <div class="card-body text-center fw-bold fs-3">
+                                    <a href="javascript:showplayer({{ p.id }})">{{ p.name }}</a>
+                                </div>
+                                <div id="team{{ p.id }}" hidden>{{ p.team }}</div>
+                                <div id="name{{ p.id }}" hidden>{{ p.name }}</div>
+                                <div id="height{{ p.id }}" hidden>{{ p.height }}</div>
+                                <div id="kg{{ p.id }}" hidden>{{ p.kg }}</div>
+                                <div id="birth{{ p.id }}" hidden>{{ p.birth }}</div>
+                                <div id="position{{ p.id }}" hidden>{{ p.position }}</div>
                             </div>
                         {% endif %}
                     {% endfor %}
@@ -53,8 +74,18 @@
                     {% for p in pinfo %}
                         {% if p.position == 'MF' %}
                             <div class="card text-center" style="width: 15rem; margin-right: 20px;">
-                                <img src="/static/imgs/{{ p.team }}/{{ p.name }}.png" class="card-img-top" alt="...">
-                                <div class="card-body text-center fw-bold fs-3">{{ p.name }}</div>
+                                <a href="javascript:showplayer({{ p.id }})">
+                                    <img src="/static/imgs/{{ p.team }}/{{ p.name }}.png" class="card-img-top" alt="...">
+                                </a>
+                                <div class="card-body text-center fw-bold fs-3">
+                                    <a href="javascript:showplayer({{ p.id }})">{{ p.name }}</a>
+                                </div>
+                                <div id="team{{ p.id }}" hidden>{{ p.team }}</div>
+                                <div id="name{{ p.id }}" hidden>{{ p.name }}</div>
+                                <div id="height{{ p.id }}" hidden>{{ p.height }}</div>
+                                <div id="kg{{ p.id }}" hidden>{{ p.kg }}</div>
+                                <div id="birth{{ p.id }}" hidden>{{ p.birth }}</div>
+                                <div id="position{{ p.id }}" hidden>{{ p.position }}</div>
                             </div>
                         {% endif %}
                     {% endfor %}
@@ -65,8 +96,18 @@
                     {% for p in pinfo %}
                         {% if p.position == 'FW' %}
                             <div class="card text-center" style="width: 15rem; margin-right: 20px;">
-                                <img src="/static/imgs/{{ p.team }}/{{ p.name }}.png" class="card-img-top" alt="...">
-                                <div class="card-body text-center fw-bold fs-3">{{ p.name }}</div>
+                                <a href="javascript:showplayer({{ p.id }})">
+                                    <img src="/static/imgs/{{ p.team }}/{{ p.name }}.png" class="card-img-top" alt="...">
+                                </a>
+                                <div class="card-body text-center fw-bold fs-3">
+                                    <a href="javascript:showplayer({{ p.id }})">{{ p.name }}</a>
+                                </div>
+                                <div id="team{{ p.id }}" hidden>{{ p.team }}</div>
+                                <div id="name{{ p.id }}" hidden>{{ p.name }}</div>
+                                <div id="height{{ p.id }}" hidden>{{ p.height }}</div>
+                                <div id="kg{{ p.id }}" hidden>{{ p.kg }}</div>
+                                <div id="birth{{ p.id }}" hidden>{{ p.birth }}</div>
+                                <div id="position{{ p.id }}" hidden>{{ p.position }}</div>
                             </div>
                         {% endif %}
                     {% endfor %}
@@ -75,9 +116,76 @@
             </div>
         </div>
     </div>
+{#</div>#}
+
+<div id="playermodal" class="fade modal" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title">플레이어 정보</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="image" style="text-align: center; margin-bottom: 10px;"></div>
+                <table id="mtable" style="margin: 0 auto">
+
+                    <tr>
+                        <th>소속구단</th>
+                        <td id="team"></td>
+                    </tr>
+                    <tr>
+                        <th>포지션</th>
+                        <td id="position"></td>
+                    </tr>
+                    <tr>
+                        <th>선수명</th>
+                        <td id="name"></td>
+                    </tr>
+                    <tr>
+                        <th>신장</th>
+                        <td id="height"></td>
+                    </tr>
+                    <tr>
+                        <th>몸무게</th>
+                        <td id="kg"></td>
+                    </tr>
+                    <tr>
+                        <th>생년월일</th>
+                        <td id="birth"></td>
+                    </tr>
+
+
+                </table>
+
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 
 {% block script %}
+    <script>
+        function showplayer(id){
+            tname = document.getElementById(`team${id}`).textContent
+            pname = document.getElementById(`name${id}`).textContent
+            logo = '<img src="/static/imgs/'+tname+'/reclogo.png">'+tname
+            pimg = '<img src="/static/imgs/'+tname+'/'+pname+'.png" style="width: 200; height: 300px;">'
+            document.getElementById('image').innerHTML = pimg
+            document.getElementById('team').innerHTML = logo
+
+            document.getElementById('position').textContent = document.getElementById(`position${id}`).textContent
+            document.getElementById('name').textContent = document.getElementById(`name${id}`).textContent
+            document.getElementById('height').textContent = document.getElementById(`height${id}`).textContent
+            document.getElementById('kg').textContent = document.getElementById(`kg${id}`).textContent
+            document.getElementById('birth').textContent = document.getElementById(`birth${id}`).textContent
+
+            const myModal = new bootstrap.Modal(document.getElementById('playermodal'))
+            myModal.show();
+        }
+
+    </script>
 
 {% endblock %}
