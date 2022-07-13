@@ -27,6 +27,55 @@
             </section>
         </div>
 
+    <div class="mt-n2 text-right">
+         <div>
+            <table class="table table-striped table-hover " style="font-size: 12px;width: 500px">
+                <hr style="border:2px solid black">
+                    <tr style="height: 12px; text-align: center">
+                        <th style="width: 50px">순위</th>
+                        <th style="width: 100px">구단</th>
+                        <th style="width: 50px">경기</th>
+                        <th style="width: 50px">승점</th>
+                        <th style="width: 50px">승</th>
+                        <th style="width: 50px">무</th>
+                        <th style="width: 50px">패</th>
+                        <th style="width: 50px">득점</th>
+                        <th style="width: 50px">실점</th>
+                        <th style="width: 50px">득실</th>
+                    </tr>
+                {% for s in sbs %}
+                <tr class="text-primary" style="height: 12px; text-align: center" href="/home/standing/?rank={{ s.rank }}">
+                    <td style="width: 50px">{{ s.rank }}</td>
+                    <td style="width: 100px"><img src="/static/imgs/{{ s.team }}/reclogo.png" style="width: 15px; height: 15px">{{ s.based }}</td>
+                    <td style="width: 50px">{{ s.match }}</td>
+                    <td style="width: 50px">{{ s.wpoint }}</td>
+                    <td style="width: 50px">{{ s.win }}</td>
+                    <td style="width: 50px">{{ s.draw }}</td>
+                    <td style="width: 50px">{{ s.defeat }}</td>
+                    <td style="width: 50px">{{ s.goal }}</td>
+                    <td style="width: 50px">{{ s.loss }}</td>
+                    <td style="width: 50px">{{ s.gol }}</td>
+                </tr> <!-- 1위 -->
+                {% endfor %}
+            </table>
+        </div>
+    </div><!-- 게시판 -->
+
+    <div>
+            <div class="app container text-light text-center" style="border:1px solid lightgray; background:darkgray">
+
+                <div class="app-tit col">K리그 APP RENEWAL OPEN</div>
+                    <p>
+                        K리그 APP이 새롭게 리뉴얼되었습니다.
+                        <br>
+                        지금 바로 다운로드하러 가세요!
+                    </p>
+                <div class="app-store container"><a href="https://apps.apple.com/kr/app/k-league-k%EB%A6%AC%EA%B7%B8/id1204398549"><img src="/static/imgs/appstore.png"></a>
+                <a href="https://play.google.com/store/apps/details?id=com.kleague.kleagueapp"><img src="/static/imgs/googleplay.png"></a>
+                <div><img src="/static/imgs/storebanner.png"></div></div>
+            </div>
+        </div>
+
     </div>
 {% endblock %}
 

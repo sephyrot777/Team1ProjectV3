@@ -104,3 +104,9 @@ footer {
     background: #292f3d;
     height:200px;
 }
+
+/* 푸터의 첫줄 링크 잘 보이게 수정 */
+.linkwhite a{
+    color:white;
+    text-decoration: none;
+}

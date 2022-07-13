@@ -6,12 +6,38 @@ from django.core import serializers
 # Create your views here.
 
 # 메인화면 뷰
+from home.models import Standing
 from join.models import Member
 
 
 class HomeView(View):
     def get(self, request):
-        return render(request, 'index.html')
+        form = request.GET.dict()
+        sbs = Standing.objects.all()
+        print(form)
+
+        if (form != {}):
+            stand = Standing.objects.get(rank=form['rank'])
+        else:
+            stand = Standing.objects.get(rank='1')
+
+        context = {'sbs': sbs,
+                   'rank': stand.rank,
+                   'based': stand.based,
+                   'team': stand.team,
+                   'match': stand.match,
+                   'wpoint': stand.wpoint,
+                   'win': stand.win,
+                   'draw': stand.draw,
+                   'defeat': stand.defeat,
+                   'goal': stand.goal,
+                   'loss': stand.loss,
+                   'gol': stand.gol,
+                   }
+
+        print(context)
+
+        return render(request, 'index.html', context)
 
     def post(self, request):
         pass
@@ -85,3 +111,34 @@ class SearchIdView(View):
 
 
         return HttpResponse(json_data, content_type='application/json')
+
+
+class StandingView(View):
+    def get(self, request):
+        form = request.GET.dict()
+        sbs = Standing.objects.all()
+        print(form)
+
+        if (form != {}):
+            stand = Standing.objects.get(rank=form['rank'])
+        else:
+            stand = Standing.objects.get(rank='1')
+
+
+        context = {'sbs': sbs,
+                   'rank': stand.rank,
+                   'based': stand.based,
+                   'team': stand.team,
+                   'match': stand.match,
+                   'wpoint': stand.wpoint,
+                   'win': stand.win,
+                   'draw': stand.draw,
+                   'defeat': stand.defeat,
+                   'goal': stand.goal,
+                   'loss': stand.loss,
+                   'gol': stand.gol,
+                   }
+
+        print(context)
+
+        return render(request, 'index.html', context)

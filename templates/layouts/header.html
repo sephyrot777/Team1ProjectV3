@@ -16,8 +16,8 @@
                 {% endif %}
 
                 {% if request.session.userinfo %}
-                    <li class="nonlis"><a href="{% url 'logout' %}"><i class="bi bi-person-check-fill"></i>로그아웃</a></li>
-                    <li class="nonlis"><a href="{% url 'mypage' %}"><i class="bi bi-clipboard2-check-fill"></i>마이페이지</a></li>
+                    <li class="nonlis"><a href="{% url 'logout' %}"><i class="bi bi-x-square-fill"></i>로그아웃</a></li>
+                    <li class="nonlis"><a href="{% url 'mypage' %}"><i class="bi bi-file-person-fill"></i>마이페이지</a></li>
                 {% endif %}
 
                 <li class="nonlis"><a href="{% url 'sitemap' %}"><i class="bi bi-chevron-double-down"></i>사이트맵</a></li>
@@ -31,7 +31,7 @@
 </header>
 
 <!-- 구분선인데 왜 흰색 공백이 밑에 생기는 걸까요... -->
-<hr class="mt-auto mb-auto" style="border:5px solid #545454;">
+<hr class="mt-auto mb-0" style="border:5px solid #545454;">
 
 <!-- 네비바 -->
 <nav class="mb-auto nav navbar-expand mt-3 navbar-dark bg-dark fw-bold">
