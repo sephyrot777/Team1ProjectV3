@@ -100,13 +100,6 @@
 }
 
 
-/* 메인색 임시 */
-#main {
-    position:relative;
-    z-index: -1;
-    background:#e3e3e3
-}
-
 footer {
     background: #292f3d;
     height:200px;
