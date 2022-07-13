@@ -1,0 +1,33 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}가입완료{% endblock %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/vendor/join.css' %}">
+{% endblock %}
+{% block contents %}
+    <div id="main">
+        <div class="mt-2 mx-5" id="agree">
+            <h1>로그인 실패</h1>
+            <small class="fw-bold" style="color:#626262">입력하신 정보는 회원님의 동의없이 공개되지 않으며, 개인정보보호정책에 의해 보호를 받습니다.</small>
+        </div><!-- // 4.기본정보입력-->
+        <hr>
+        <div style="text-align: center;">
+            <div><i class="bi bi-x-circle-fill text-danger" style="font-size:150px;"></i></div>
+            <h2 style="margin-bottom: 50px;">로그인에 <b>실패</b> 했습니다.</h2>
+            <h5><b>아이디</b>나 <b>비밀번호</b>를 확인하시고 다시 로그인 해주세요.</h5>
+            <h5>아이디가 기억나지 않으신 경우, 로그인 모달의</h5>
+            <h5 style="margin-bottom: 50px;"><b>아이디/비밀번호 찾기</b> 버튼을 눌러주십시오.</h5>
+            <hr>
+            <button type="button" class="btn btn-dark mb-5" name="homebtn" id="homebtn"><i class="bi bi-house-fill"></i>홈으로</button>
+        </div>
+    </div><!-- // main -->
+{% endblock %}
+{% block script %}
+<script>
+    let homebtn = document.querySelector('#homebtn');
+    homebtn.addEventListener('click',()=>{
+        location.href='/';
+    });
+</script>
+{% endblock %}

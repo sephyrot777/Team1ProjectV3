@@ -109,7 +109,11 @@ class JoinmeView(View):
 # 가입완료 뷰
 class JoinokView(View):
     def get(self, request):
-        return render(request, 'join/joinok.html')
+        form = request.GET.dict()
+        m=Member.objects.select_related().get(userid=form['userid'])
+
+        context = {'member': m}
+        return render(request, 'join/joinok.html', context)
 
     def post(self, request):
         pass
