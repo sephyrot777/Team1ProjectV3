@@ -54,8 +54,8 @@ class LoginView(View):
         if isExisted:
             user = Member.objects.get(userid=form['muserid'])
 
-            request.session['userinfo'] = form['muserid'] + '|' + str(user.id) + '|' + str(user.team)
-            print(request.session['userinfo'])
+            request.session['myteam'] = str(user.team)
+            print(request.session['myteam'])
 
             returnPage='/'
 

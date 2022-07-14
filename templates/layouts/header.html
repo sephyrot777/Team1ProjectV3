@@ -10,12 +10,12 @@
         </div>
         <div class="mt-auto">
             <ul class="logform d-flex">
-                {% if not request.session.userinfo %}
+                {% if not request.session.myteam %}
                     <li class="nonlis"><a href="modal.html" data-bs-toggle="modal" data-bs-target="#loginmodal"><i class="bi bi-person-check-fill"></i>로그인</a></li>
                     <li class="nonlis"><a href="{% url 'agree' %}"><i class="bi bi-clipboard2-check-fill"></i>회원가입</a></li>
                 {% endif %}
 
-                {% if request.session.userinfo %}
+                {% if request.session.myteam %}
                     <li class="nonlis"><a href="{% url 'logout' %}"><i class="bi bi-x-square-fill"></i>로그아웃</a></li>
                     <li class="nonlis"><a href="{% url 'mypage' %}"><i class="bi bi-file-person-fill"></i>마이페이지</a></li>
                 {% endif %}
