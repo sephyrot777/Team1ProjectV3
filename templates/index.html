@@ -81,7 +81,7 @@
 
 
 {% block script %}
-    {#  3Dslide javascript  #}
+    {# 3Dslide javascript #}
     <script>
         const slide1=document.getElementById('s1');
         const slide2=document.getElementById('s2');
@@ -102,5 +102,166 @@
             console.log(i);
         };
         setInterval(playslide, 3000);
+    </script>
+    {# 세션값에 따른 슬라이드 사진과 SNS링크 변경 #}
+    <script>
+        const slide1=document.getElementById("slide1");
+        const slide2=document.getElementById("slide2");
+        const slide3=document.getElementById("slide3");
+        const slide4=document.getElementById("slide4");
+        const slide5=document.getElementById("slide5");
+
+        const facebook=document.getElementById("facebook");
+        const instagram=document.getElementById("instagram");
+        const youtube=document.getElementById("youtube");
+
+        // 로그인 시 생성되는 request.session('myteam')을 받아와야 함
+       let myteam = '<%=(String)session("myteam")%>';
+       alert(myteam) //세션변수가 제대로 뜨는지 확인
+        // myteam이 팀 이름일 때, 이미지 src와 상단 SNS 링크 교체
+       if (myteam == '강원 FC') {
+           slide1.src="{% static 'imgs/index_slide/강원fc/1.png' %}"
+           slide2.src="{% static 'imgs/index_slide/강원fc/2.jpg' %}"
+           slide3.src="{% static 'imgs/index_slide/강원fc/3.jpg' %}"
+           slide4.src="{% static 'imgs/index_slide/강원fc/4.jpg' %}"
+           slide5.src="{% static 'imgs/index_slide/강원fc/5.jpg' %}"
+
+           facebook.href="https://www.facebook.com/gangwonfc";
+           instagram.href="https://www.instagram.com/gangwon_fc/";
+           youtube.href="https://www.youtube.com/user/gangwonfc/featured";
+       }
+
+       else if (myteam == '김천 상무 FC') {
+           slide1.src="{% static 'imgs/index_slide/김천상무fc/1.jpg' %}"
+           slide2.src="{% static 'imgs/index_slide/김천상무fc/2.jpg' %}"
+           slide3.src="{% static 'imgs/index_slide/김천상무fc/3.jpg' %}"
+           slide4.src="{% static 'imgs/index_slide/김천상무fc/4.jpg' %}"
+           slide5.src="{% static 'imgs/index_slide/김천상무fc/5.jpg' %}"
+
+           facebook.href="https://www.facebook.com/gimcheonsangmu";
+           instagram.href="https://www.instagram.com/gimcheonfc/";
+           youtube.href="https://www.youtube.com/channel/UCSZ-CvpbBm6JnZnWYmiNrlQ";
+       }
+
+       else if (myteam == '대구 FC') {
+           slide1.src="{% static 'imgs/index_slide/대구fc/1.jpg' %}"
+           slide2.src="{% static 'imgs/index_slide/대구fc/2.jpg' %}"
+           slide3.src="{% static 'imgs/index_slide/대구fc/3.jpg' %}"
+           slide4.src="{% static 'imgs/index_slide/대구fc/4.jpg' %}"
+           slide5.src="{% static 'imgs/index_slide/대구fc/5.jpg' %}"
+
+           facebook.href="https://www.facebook.com/daegufc2002";
+           instagram.href="https://www.instagram.com/daegufc.co.kr/";
+           youtube.href="https://www.youtube.com/user/TheDaeguFC";
+       }
+
+       else if (myteam == '서울 FC') {
+           slide1.src="{% static 'imgs/index_slide/서울fc/1.JPG' %}"
+           slide2.src="{% static 'imgs/index_slide/서울fc/2.jpg' %}"
+           slide3.src="{% static 'imgs/index_slide/서울fc/3.png' %}"
+           slide4.src="{% static 'imgs/index_slide/서울fc/4.png' %}"
+           slide5.src="{% static 'imgs/index_slide/서울fc/5.png' %}"
+
+           facebook.href="https://www.facebook.com/fcseoul";
+           instagram.href="https://www.instagram.com/fcseoul/";
+           youtube.href="https://www.youtube.com/user/FCSEOUL";
+       }
+
+       else if (myteam == '성남 FC') {
+           slide1.src="{% static 'imgs/index_slide/성남fc/1.jpg' %}"
+           slide2.src="{% static 'imgs/index_slide/성남fc/2.jpg' %}"
+           slide3.src="{% static 'imgs/index_slide/성남fc/3.jpg' %}"
+           slide4.src="{% static 'imgs/index_slide/성남fc/4.jpg' %}"
+           slide5.src="{% static 'imgs/index_slide/성남fc/5.jpg' %}"
+
+           facebook.href="https://www.facebook.com/SFC.Seongnam/?fref=nf";
+           instagram.href="https://www.instagram.com/sfc.seongnam/";
+           youtube.href="https://www.youtube.com/channel/UCt7aHRANCzaUDnEcTxnXhgg";
+       }
+
+       else if (myteam == '수원 삼성 블루윙즈') {
+           slide1.src="{% static 'imgs/index_slide/수원 삼성 블루윙즈/1.png' %}"
+           slide2.src="{% static 'imgs/index_slide/수원 삼성 블루윙즈/2.png' %}"
+           slide3.src="{% static 'imgs/index_slide/수원 삼성 블루윙즈/3.png' %}"
+           slide4.src="{% static 'imgs/index_slide/수원 삼성 블루윙즈/4.jpg' %}"
+           slide5.src="{% static 'imgs/index_slide/수원 삼성 블루윙즈/5.jpg' %}"
+
+           facebook.href="https://www.facebook.com/SuwonSamsungFC";
+           instagram.href="https://www.instagram.com/suwonsamsungfc/";
+           youtube.href="https://www.youtube.com/user/bluewingsfc";
+       }
+
+       else if (myteam == '수원 FC') {
+           slide1.src="{% static 'imgs/index_slide/수원fc/1.jpg' %}"
+           slide2.src="{% static 'imgs/index_slide/수원fc/2.jpg' %}"
+           slide3.src="{% static 'imgs/index_slide/수원fc/3.jpg' %}"
+           slide4.src="{% static 'imgs/index_slide/수원fc/4.jpg' %}"
+           slide5.src="{% static 'imgs/index_slide/수원fc/5.jpg' %}"
+
+           facebook.href="https://www.facebook.com/suwonfc2003";
+           instagram.href="https://www.instagram.com/suwonfc/";
+           youtube.href="https://www.youtube.com/channel/UCHPiDeQQyVcYe-nhyUanSWg";
+       }
+
+       else if (myteam == '울산 현대') {
+           slide1.src="{% static 'imgs/index_slide/울산 현대/1.jpg' %}"
+           slide2.src="{% static 'imgs/index_slide/울산 현대/2.jpg' %}"
+           slide3.src="{% static 'imgs/index_slide/울산 현대/3.jpg' %}"
+           slide4.src="{% static 'imgs/index_slide/울산 현대/4.jpg' %}"
+           slide5.src="{% static 'imgs/index_slide/울산 현대/5.jpg' %}"
+
+           facebook.href="https://www.facebook.com/ulsanfc";
+           instagram.href="https://www.instagram.com/ulsanhyundaifootballclub/";
+           youtube.href="https://www.youtube.com/user/ULSANHYUNDAI";
+       }
+
+       else if (myteam == '인천 유나이티드 FC') {
+           slide1.src="{% static 'imgs/index_slide/인천 유나이티드fc/1.jpg' %}"
+           slide2.src="{% static 'imgs/index_slide/인천 유나이티드fc/2.jpg' %}"
+           slide3.src="{% static 'imgs/index_slide/인천 유나이티드fc/3.jpg' %}"
+           slide4.src="{% static 'imgs/index_slide/인천 유나이티드fc/4.jpg' %}"
+           slide5.src="{% static 'imgs/index_slide/인천 유나이티드fc/5.jpg' %}"
+
+           facebook.href="https://www.facebook.com/incheonutd2003";
+           instagram.href="https://www.instagram.com/incheonutd/";
+           youtube.href="https://www.youtube.com/channel/UCGA9gUrYCb4hRk_wHBzB_nQ";
+       }
+
+       else if (myteam == '전북 현대 모터스') {
+           slide1.src="{% static 'imgs/index_slide/전북 현대 모터스/1.jpg' %}"
+           slide2.src="{% static 'imgs/index_slide/전북 현대 모터스/2.jpg' %}"
+           slide3.src="{% static 'imgs/index_slide/전북 현대 모터스/3.jpg' %}"
+           slide4.src="{% static 'imgs/index_slide/전북 현대 모터스/4.jpg' %}"
+           slide5.src="{% static 'imgs/index_slide/전북 현대 모터스/5.jpg' %}"
+
+           facebook.href="https://www.facebook.com/jeonbuk1994";
+           instagram.href="https://www.instagram.com/jeonbuk1994/";
+           youtube.href="https://www.youtube.com/user/JEONBUKHYUNDAI";
+       }
+
+       else if (myteam == '제주 유나이티드 FC') {
+           slide1.src="{% static 'imgs/index_slide/제주 유나이티드fc/1.jpg' %}"
+           slide2.src="{% static 'imgs/index_slide/제주 유나이티드fc/2.jpg' %}"
+           slide3.src="{% static 'imgs/index_slide/제주 유나이티드fc/3.jpg' %}"
+           slide4.src="{% static 'imgs/index_slide/제주 유나이티드fc/4.jpg' %}"
+           slide5.src="{% static 'imgs/index_slide/제주 유나이티드fc/5.jpg' %}"
+
+           facebook.href="https://www.facebook.com/JejuUnitedFootballClub/";
+           instagram.href="https://www.instagram.com/jejuunitedfc/";
+           youtube.href="https://www.youtube.com/channel/UCQfQeoiJTN2EVqde4_0PlUA/featured";
+       }
+
+       else if (myteam == '포항 스틸러스') {
+           slide1.src="{% static 'imgs/index_slide/포항 스틸러스/1.jpg' %}"
+           slide2.src="{% static 'imgs/index_slide/포항 스틸러스/2.jpg' %}"
+           slide3.src="{% static 'imgs/index_slide/포항 스틸러스/3.jpg' %}"
+           slide4.src="{% static 'imgs/index_slide/포항 스틸러스/4.jpg' %}"
+           slide5.src="{% static 'imgs/index_slide/포항 스틸러스/5.jpg' %}"
+
+           facebook.href="https://www.facebook.com/fcpohangsteelers";
+           instagram.href="https://www.instagram.com/fc.pohangsteelers/";
+           youtube.href="https://www.youtube.com/channel/UCOZQIw1I6ixjQZ_va_eCn7w";
+       }
+
     </script>
 {% endblock %}
