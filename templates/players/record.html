@@ -4,22 +4,22 @@
 {% block title %}{% endblock %}
 {% block style %}
     <style>
-        #mtable th { text-align: end; width: 100px; border: 1px solid black; font-size: 15px;}
-        #mtable td { text-align: center; width: 200px;border: 1px solid black}
+        #mtable th { text-align: end; width: 100px; border: 1px solid white; font-size: 15px;}
+        #mtable td { text-align: center; width: 200px;border: 1px solid white; text-decoration: none;}
+        #main { width: 1500px; margin: 0 auto}
     </style>
 
 {% endblock %}
 
 {% block contents %}
-    <div>
-    <h1 class="mt-4 text-center fw-bold">선수 기록/순위</h1>
-    <h3 class="text-end text-dark opacity-50 mt-2">2022-07</h3>
-    <div class="row mt-n2">
-            <div class="col"></div>
-            <div class="col-12 text-center">
-                <table class="table table-striped table-hover fw-bold">
+<div class="bg-dark" id="main">
+    <h1 class="mt-4 text-center text-white fw-bold">선수 기록/순위</h1>
+    <h3 class="text-end text-white opacity-50 mt-2">2022-07</h3>
+    <div class="row mt-n2 ">
+            <div class="col-12">
+                <hr style="border:2px solid black">
+                <table class="table table-dark table-striped table-hover fw-bold text-center">
                     <thead class="thead">
-                    <hr style="border:2px solid black">
                         <tr style="height: 60px; vertical-align: middle">
                             <th style="width: 4%">순위</th>
                             <th style="width: 6%">선수명</th>
@@ -43,10 +43,9 @@
 
                     <tbody>
                     {% for p in pbs %}
-                    <tr class="text-danger" href="/players/record/?name={{ p.name }}">
-                        <td id="rank{{ p.rank }}">{{ p.rank }}</td>
-{#                        <td><a href="javascript:showrecord('{{ p.id }}')">{{ p.name }}</a></td>#}
-                        <td id="name{{ p.rank }}"><a href="javascript:showrecord({{ p.rank }})">{{ p.name }}</a></td>
+                    <tr class="text-warning" href="/players/record/?name={{ p.name }}">
+                        <td id="rank{{ p.rank }}">{{ p.rank }}</td>{#
+                        <td id="name{{ p.rank }}"><a href="javascript:showrecord({{ p.rank }})" style="text-decoration: none; color: currentColor"  >{{ p.name }}</a></td>
                         <td id="team{{ p.rank }}"><img src="/static/imgs/{{ p.team }}/reclogo.png">{{ p.team }}</td>
                         <td id="goal{{ p.rank }}">{{ p.goal }}</td>
                         <td id="assist{{ p.rank }}">{{ p.assist }}</td>
@@ -75,15 +74,11 @@
             </div>
             <div class="col"></div>
         </div><!-- 게시판 -->
-
-
-
-
 </div> <!-- main -->
 
 <div id="playermodal" class="fade modal" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <div class="modal-content bg-dark text-white">
             <div class="modal-header">
             <h5 class="modal-title">플레이어 정보</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
