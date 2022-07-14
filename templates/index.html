@@ -14,17 +14,18 @@
                 <input type="radio" name="slider" id="s3">
                 <input type="radio" name="slider" id="s4">
                 <input type="radio" name="slider" id="s5">
-                <label for="s1" id="slide1"><img src="{% static 'imgs/index_slide/testimage_1.png' %}"
+                <label for="s1" id="slide1"><img id="img1" src="{% static 'imgs/index_slide/testimage_1.png' %}"
                                                  style="width:100%; height:100%;"></label>
-                <label for="s2" id="slide2"><img src="{% static 'imgs/index_slide/testimage_2.png' %}"
+                <label for="s2" id="slide2"><img id="img2" src="{% static 'imgs/index_slide/testimage_2.png' %}"
                                                  style="width:100%; height:100%;"></label>
-                <label for="s3" id="slide3"><img src="{% static 'imgs/index_slide/testimage_3.png' %}"
+                <label for="s3" id="slide3"><img id="img3" src="{% static 'imgs/index_slide/testimage_3.png' %}"
                                                  style="width:100%; height:100%;"></label>
-                <label for="s4" id="slide4"><img src="{% static 'imgs/index_slide/testimage_4.png' %}"
+                <label for="s4" id="slide4"><img id="img4" src="{% static 'imgs/index_slide/testimage_4.png' %}"
                                                  style="width:100%; height:100%;"></label>
-                <label for="s5" id="slide5"><img src="{% static 'imgs/index_slide/testimage_5.png' %}"
+                <label for="s5" id="slide5"><img id="img5" src="{% static 'imgs/index_slide/testimage_5.png' %}"
                                                  style="width:100%; height:100%;"></label>
             </section>
+            <input type="hidden" value="{{ request.session.myteam }}" id="sessionval">
         </div>
 
     <div class="mt-n2 text-right">
@@ -99,32 +100,33 @@
             else if (i == 4){slide5.click();}
             if (i == 4){i = -1}
             i = i + 1;
-            console.log(i);
+            // console.log(i);
         };
         setInterval(playslide, 3000);
     </script>
     {# 세션값에 따른 슬라이드 사진과 SNS링크 변경 #}
     <script>
-        const slide1=document.getElementById("slide1");
-        const slide2=document.getElementById("slide2");
-        const slide3=document.getElementById("slide3");
-        const slide4=document.getElementById("slide4");
-        const slide5=document.getElementById("slide5");
+        const img1=document.getElementById('img1');
+        const img2=document.getElementById('img2');
+        const img3=document.getElementById('img3');
+        const img4=document.getElementById('img4');
+        const img5=document.getElementById('img5');
 
         const facebook=document.getElementById("facebook");
         const instagram=document.getElementById("instagram");
         const youtube=document.getElementById("youtube");
 
         // 로그인 시 생성되는 request.session('myteam')을 받아와야 함
-       let myteam = {{ request.session.myteam }};
-       alert(myteam); //세션변수가 제대로 뜨는지 확인
+       let sessionval = document.querySelector('#sessionval');
+       myteam=sessionval.value
+       // alert(myteam); //세션변수가 제대로 뜨는지 확인
         // myteam이 팀 이름일 때, 이미지 src와 상단 SNS 링크 교체
        if (myteam == '강원 FC') {
-           slide1.src="{% static 'imgs/index_slide/강원fc/1.png' %}"
-           slide2.src="{% static 'imgs/index_slide/강원fc/2.jpg' %}"
-           slide3.src="{% static 'imgs/index_slide/강원fc/3.jpg' %}"
-           slide4.src="{% static 'imgs/index_slide/강원fc/4.jpg' %}"
-           slide5.src="{% static 'imgs/index_slide/강원fc/5.jpg' %}"
+           img1.src="{% static 'imgs/index_slide/gangwonfc/1.png' %}"
+           img2.src="{% static 'imgs/index_slide/gangwonfc/2.jpg' %}"
+           img3.src="{% static 'imgs/index_slide/gangwonfc/3.jpg' %}"
+           img4.src="{% static 'imgs/index_slide/gangwonfc/4.jpg' %}"
+           img5.src="{% static 'imgs/index_slide/gangwonfc/5.jpg' %}"
 
            facebook.href="https://www.facebook.com/gangwonfc";
            instagram.href="https://www.instagram.com/gangwon_fc/";
@@ -132,11 +134,11 @@
        }
 
        else if (myteam == '김천 상무 FC') {
-           slide1.src="{% static 'imgs/index_slide/김천상무fc/1.jpg' %}"
-           slide2.src="{% static 'imgs/index_slide/김천상무fc/2.jpg' %}"
-           slide3.src="{% static 'imgs/index_slide/김천상무fc/3.jpg' %}"
-           slide4.src="{% static 'imgs/index_slide/김천상무fc/4.jpg' %}"
-           slide5.src="{% static 'imgs/index_slide/김천상무fc/5.jpg' %}"
+           img1.src="{% static 'imgs/index_slide/gimcheonfc/1.jpg' %}"
+           img2.src="{% static 'imgs/index_slide/gimcheonfc/2.jpg' %}"
+           img3.src="{% static 'imgs/index_slide/gimcheonfc/3.jpg' %}"
+           img4.src="{% static 'imgs/index_slide/gimcheonfc/4.jpg' %}"
+           img5.src="{% static 'imgs/index_slide/gimcheonfc/5.jpg' %}"
 
            facebook.href="https://www.facebook.com/gimcheonsangmu";
            instagram.href="https://www.instagram.com/gimcheonfc/";
@@ -144,11 +146,11 @@
        }
 
        else if (myteam == '대구 FC') {
-           slide1.src="{% static 'imgs/index_slide/대구fc/1.jpg' %}"
-           slide2.src="{% static 'imgs/index_slide/대구fc/2.jpg' %}"
-           slide3.src="{% static 'imgs/index_slide/대구fc/3.jpg' %}"
-           slide4.src="{% static 'imgs/index_slide/대구fc/4.jpg' %}"
-           slide5.src="{% static 'imgs/index_slide/대구fc/5.jpg' %}"
+           img1.src="{% static 'imgs/index_slide/daegufc/1.jpg' %}"
+           img2.src="{% static 'imgs/index_slide/daegufc/2.jpg' %}"
+           img3.src="{% static 'imgs/index_slide/daegufc/3.jpg' %}"
+           img4.src="{% static 'imgs/index_slide/daegufc/4.jpg' %}"
+           img5.src="{% static 'imgs/index_slide/daegufc/5.jpg' %}"
 
            facebook.href="https://www.facebook.com/daegufc2002";
            instagram.href="https://www.instagram.com/daegufc.co.kr/";
@@ -156,11 +158,11 @@
        }
 
        else if (myteam == '서울 FC') {
-           slide1.src="{% static 'imgs/index_slide/서울fc/1.JPG' %}"
-           slide2.src="{% static 'imgs/index_slide/서울fc/2.jpg' %}"
-           slide3.src="{% static 'imgs/index_slide/서울fc/3.png' %}"
-           slide4.src="{% static 'imgs/index_slide/서울fc/4.png' %}"
-           slide5.src="{% static 'imgs/index_slide/서울fc/5.png' %}"
+           img1.src="{% static 'imgs/index_slide/seoulfc/1.JPG' %}"
+           img2.src="{% static 'imgs/index_slide/seoulfc/2.jpg' %}"
+           img3.src="{% static 'imgs/index_slide/seoulfc/3.png' %}"
+           img4.src="{% static 'imgs/index_slide/seoulfc/4.png' %}"
+           img5.src="{% static 'imgs/index_slide/seoulfc/5.png' %}"
 
            facebook.href="https://www.facebook.com/fcseoul";
            instagram.href="https://www.instagram.com/fcseoul/";
@@ -168,11 +170,11 @@
        }
 
        else if (myteam == '성남 FC') {
-           slide1.src="{% static 'imgs/index_slide/성남fc/1.jpg' %}"
-           slide2.src="{% static 'imgs/index_slide/성남fc/2.jpg' %}"
-           slide3.src="{% static 'imgs/index_slide/성남fc/3.jpg' %}"
-           slide4.src="{% static 'imgs/index_slide/성남fc/4.jpg' %}"
-           slide5.src="{% static 'imgs/index_slide/성남fc/5.jpg' %}"
+           img1.src="{% static 'imgs/index_slide/seongnamfc/1.jpg' %}"
+           img2.src="{% static 'imgs/index_slide/seongnamfc/2.jpg' %}"
+           img3.src="{% static 'imgs/index_slide/seongnamfc/3.jpg' %}"
+           img4.src="{% static 'imgs/index_slide/seongnamfc/4.jpg' %}"
+           img5.src="{% static 'imgs/index_slide/seongnamfc/5.jpg' %}"
 
            facebook.href="https://www.facebook.com/SFC.Seongnam/?fref=nf";
            instagram.href="https://www.instagram.com/sfc.seongnam/";
@@ -180,11 +182,11 @@
        }
 
        else if (myteam == '수원 삼성 블루윙즈') {
-           slide1.src="{% static 'imgs/index_slide/수원 삼성 블루윙즈/1.png' %}"
-           slide2.src="{% static 'imgs/index_slide/수원 삼성 블루윙즈/2.png' %}"
-           slide3.src="{% static 'imgs/index_slide/수원 삼성 블루윙즈/3.png' %}"
-           slide4.src="{% static 'imgs/index_slide/수원 삼성 블루윙즈/4.jpg' %}"
-           slide5.src="{% static 'imgs/index_slide/수원 삼성 블루윙즈/5.jpg' %}"
+           img1.src="{% static 'imgs/index_slide/bluewingsfc/1.png' %}"
+           img2.src="{% static 'imgs/index_slide/bluewingsfc/2.png' %}"
+           img3.src="{% static 'imgs/index_slide/bluewingsfc/3.png' %}"
+           img4.src="{% static 'imgs/index_slide/bluewingsfc/4.jpg' %}"
+           img5.src="{% static 'imgs/index_slide/bluewingsfc/5.jpg' %}"
 
            facebook.href="https://www.facebook.com/SuwonSamsungFC";
            instagram.href="https://www.instagram.com/suwonsamsungfc/";
@@ -192,11 +194,11 @@
        }
 
        else if (myteam == '수원 FC') {
-           slide1.src="{% static 'imgs/index_slide/수원fc/1.jpg' %}"
-           slide2.src="{% static 'imgs/index_slide/수원fc/2.jpg' %}"
-           slide3.src="{% static 'imgs/index_slide/수원fc/3.jpg' %}"
-           slide4.src="{% static 'imgs/index_slide/수원fc/4.jpg' %}"
-           slide5.src="{% static 'imgs/index_slide/수원fc/5.jpg' %}"
+           img1.src="{% static 'imgs/index_slide/suwonfc/1.jpg' %}"
+           img2.src="{% static 'imgs/index_slide/suwonfc/2.jpg' %}"
+           img3.src="{% static 'imgs/index_slide/suwonfc/3.jpg' %}"
+           img4.src="{% static 'imgs/index_slide/suwonfc/4.jpg' %}"
+           img5.src="{% static 'imgs/index_slide/suwonfc/5.jpg' %}"
 
            facebook.href="https://www.facebook.com/suwonfc2003";
            instagram.href="https://www.instagram.com/suwonfc/";
@@ -204,11 +206,11 @@
        }
 
        else if (myteam == '울산 현대') {
-           slide1.src="{% static 'imgs/index_slide/울산 현대/1.jpg' %}"
-           slide2.src="{% static 'imgs/index_slide/울산 현대/2.jpg' %}"
-           slide3.src="{% static 'imgs/index_slide/울산 현대/3.jpg' %}"
-           slide4.src="{% static 'imgs/index_slide/울산 현대/4.jpg' %}"
-           slide5.src="{% static 'imgs/index_slide/울산 현대/5.jpg' %}"
+           img1.src="{% static 'imgs/index_slide/ulsanfc/1.jpg' %}"
+           img2.src="{% static 'imgs/index_slide/ulsanfc/2.jpg' %}"
+           img3.src="{% static 'imgs/index_slide/ulsanfc/3.jpg' %}"
+           img4.src="{% static 'imgs/index_slide/ulsanfc/4.jpg' %}"
+           img5.src="{% static 'imgs/index_slide/ulsanfc/5.jpg' %}"
 
            facebook.href="https://www.facebook.com/ulsanfc";
            instagram.href="https://www.instagram.com/ulsanhyundaifootballclub/";
@@ -216,11 +218,11 @@
        }
 
        else if (myteam == '인천 유나이티드 FC') {
-           slide1.src="{% static 'imgs/index_slide/인천 유나이티드fc/1.jpg' %}"
-           slide2.src="{% static 'imgs/index_slide/인천 유나이티드fc/2.jpg' %}"
-           slide3.src="{% static 'imgs/index_slide/인천 유나이티드fc/3.jpg' %}"
-           slide4.src="{% static 'imgs/index_slide/인천 유나이티드fc/4.jpg' %}"
-           slide5.src="{% static 'imgs/index_slide/인천 유나이티드fc/5.jpg' %}"
+           img1.src="{% static 'imgs/index_slide/incheonuntd/1.jpg' %}"
+           img2.src="{% static 'imgs/index_slide/incheonuntd/2.jpg' %}"
+           img3.src="{% static 'imgs/index_slide/incheonuntd/3.jpg' %}"
+           img4.src="{% static 'imgs/index_slide/incheonuntd/4.jpg' %}"
+           img5.src="{% static 'imgs/index_slide/incheonuntd/5.jpg' %}"
 
            facebook.href="https://www.facebook.com/incheonutd2003";
            instagram.href="https://www.instagram.com/incheonutd/";
@@ -228,11 +230,11 @@
        }
 
        else if (myteam == '전북 현대 모터스') {
-           slide1.src="{% static 'imgs/index_slide/전북 현대 모터스/1.jpg' %}"
-           slide2.src="{% static 'imgs/index_slide/전북 현대 모터스/2.jpg' %}"
-           slide3.src="{% static 'imgs/index_slide/전북 현대 모터스/3.jpg' %}"
-           slide4.src="{% static 'imgs/index_slide/전북 현대 모터스/4.jpg' %}"
-           slide5.src="{% static 'imgs/index_slide/전북 현대 모터스/5.jpg' %}"
+           img1.src="{% static 'imgs/index_slide/jeonbukfc/1.jpg' %}"
+           img2.src="{% static 'imgs/index_slide/jeonbukfc/2.jpg' %}"
+           img3.src="{% static 'imgs/index_slide/jeonbukfc/3.jpg' %}"
+           img4.src="{% static 'imgs/index_slide/jeonbukfc/4.jpg' %}"
+           img5.src="{% static 'imgs/index_slide/jeonbukfc/5.jpg' %}"
 
            facebook.href="https://www.facebook.com/jeonbuk1994";
            instagram.href="https://www.instagram.com/jeonbuk1994/";
@@ -240,11 +242,11 @@
        }
 
        else if (myteam == '제주 유나이티드 FC') {
-           slide1.src="{% static 'imgs/index_slide/제주 유나이티드fc/1.jpg' %}"
-           slide2.src="{% static 'imgs/index_slide/제주 유나이티드fc/2.jpg' %}"
-           slide3.src="{% static 'imgs/index_slide/제주 유나이티드fc/3.jpg' %}"
-           slide4.src="{% static 'imgs/index_slide/제주 유나이티드fc/4.jpg' %}"
-           slide5.src="{% static 'imgs/index_slide/제주 유나이티드fc/5.jpg' %}"
+           img1.src="{% static 'imgs/index_slide/jejuunitedfc/1.jpg' %}"
+           img2.src="{% static 'imgs/index_slide/jejuunitedfc/2.jpg' %}"
+           img3.src="{% static 'imgs/index_slide/jejuunitedfc/3.jpg' %}"
+           img4.src="{% static 'imgs/index_slide/jejuunitedfc/4.jpg' %}"
+           img5.src="{% static 'imgs/index_slide/jejuunitedfc/5.jpg' %}"
 
            facebook.href="https://www.facebook.com/JejuUnitedFootballClub/";
            instagram.href="https://www.instagram.com/jejuunitedfc/";
@@ -252,11 +254,11 @@
        }
 
        else if (myteam == '포항 스틸러스') {
-           slide1.src="{% static 'imgs/index_slide/포항 스틸러스/1.jpg' %}"
-           slide2.src="{% static 'imgs/index_slide/포항 스틸러스/2.jpg' %}"
-           slide3.src="{% static 'imgs/index_slide/포항 스틸러스/3.jpg' %}"
-           slide4.src="{% static 'imgs/index_slide/포항 스틸러스/4.jpg' %}"
-           slide5.src="{% static 'imgs/index_slide/포항 스틸러스/5.jpg' %}"
+           img1.src="{% static 'imgs/index_slide/pohangsteelers/1.jpg' %}"
+           img2.src="{% static 'imgs/index_slide/pohangsteelers/2.jpg' %}"
+           img3.src="{% static 'imgs/index_slide/pohangsteelers/3.jpg' %}"
+           img4.src="{% static 'imgs/index_slide/pohangsteelers/4.jpg' %}"
+           img5.src="{% static 'imgs/index_slide/pohangsteelers/5.jpg' %}"
 
            facebook.href="https://www.facebook.com/fcpohangsteelers";
            instagram.href="https://www.instagram.com/fc.pohangsteelers/";
