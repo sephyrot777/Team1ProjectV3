@@ -4,7 +4,7 @@
 {% block style %}
     <style>
         #wrap {display: flex}
-        #nav { width: 200px;}
+        #nav { width: 250px;}
         #info { display: flex}
         #info table tr td:first-child { width:150px; border-bottom: 1px solid white; border-right: 1px solid white; }
         #info table tr td:last-child { width:350px; border-bottom: 1px solid white; }
@@ -13,18 +13,18 @@
                                         background-size: 500px 400px; background-position: center;}
 
         #info img { width: 600px; height: 400px;}
-        #main1 { text-align: center; border: 1px solid red; width: 1100px; background: white;}
-        #map1 { width: 900px; margin: 0 auto;}
+        #main1 { text-align: center; margin: 0 auto; border: 1px solid red; width: 1300px; background: white;}
+        #map1 { width: 900px; }
     </style>
 {% endblock %}
 
 {% block contents %}
 <div id="wrap">
-    <div id="nav" class="bg-dark ">
-        <nav class="navbar-dark bg-dark py-2 fs-5 fw-bold">
-            <ul class="navbar-nav nav-fill">
+    <div id="nav" class="bg-dark">
+        <nav class="navbar-dark bg-dark py-2 fs-5 fw-bold" style="position: fixed">
+            <ul class="navbar-nav nav-fill" style="width: 250px;">
                 {% for t in tbs %}
-                <li class="nav-item"><a class="nav-link" href="/teams/stadium/?based={{ t.based }}">{{ t.hteam }}</a></li>
+                <li class="nav-item mb-3"><a class="nav-link" href="/players/coach/?team={{ t.hteam }}">{{ t.hteam }}</a></li>
                 {% endfor %}
             </ul>
         </nav>
@@ -77,5 +77,8 @@
 {% endblock %}
 
 {% block script %}
+    <script>
+
+    </script>
 
 {% endblock %}
