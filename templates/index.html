@@ -116,8 +116,8 @@
         const youtube=document.getElementById("youtube");
 
         // 로그인 시 생성되는 request.session('myteam')을 받아와야 함
-       let myteam = '<%=(String)session("myteam")%>';
-       alert(myteam) //세션변수가 제대로 뜨는지 확인
+       let myteam = {{ request.session.myteam }};
+       alert(myteam); //세션변수가 제대로 뜨는지 확인
         // myteam이 팀 이름일 때, 이미지 src와 상단 SNS 링크 교체
        if (myteam == '강원 FC') {
            slide1.src="{% static 'imgs/index_slide/강원fc/1.png' %}"
